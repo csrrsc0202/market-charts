@@ -5,6 +5,7 @@
   const el = (tag, className = '', value = '') => {
     const node = document.createElement(tag); node.className = className; node.textContent = value; return node;
   };
+  const displayTitle = title => title.replace(/^\d+(?:\.\d+)+\s+/, '').replace(/(\s×\s)\d+(?:\.\d+)+\s+/, '$1');
   document.getElementById('edition').textContent = `${data.edition} · 数据 ${data.dataStart} 至 ${data.dataEnd}`;
   function metrics(items) {
     const group = el('div', 'metrics');
@@ -42,7 +43,7 @@
     viewer.showModal(); document.body.style.overflow = 'hidden';
     fit(); document.getElementById('viewer-close').focus();
   }
-  const chartMap = new Map(data.charts.map(chart => [chart.id, chart]));
+  const chartMap = new Map(data.charts.map(chart => [chart.id, {...chart, title: displayTitle(chart.title)}]));
   function chartNode(chart) {
     const figure = el('figure', `chart${chart.tall ? ' tall' : ''}`);
     const button = el('button', 'chart-open');
@@ -60,11 +61,12 @@
     return figure;
   }
   function tableNode(block) {
+    const title = displayTitle(block.title);
     const container = el(block.collapsed ? 'details' : 'div', 'table-block'); container.id = block.id;
     if (block.collapsed) {
-      const summary = el('summary', '', block.title); summary.append(el('span', 'row-count', `${block.rows.length} 项`)); container.append(summary);
-    } else container.append(el('h3', '', block.title));
-    const scroller = el('div', 'table-scroll'); scroller.tabIndex = 0; scroller.setAttribute('role', 'region'); scroller.setAttribute('aria-label', block.title);
+      const summary = el('summary', '', title); summary.append(el('span', 'row-count', `${block.rows.length} 项`)); container.append(summary);
+    } else container.append(el('h3', '', title));
+    const scroller = el('div', 'table-scroll'); scroller.tabIndex = 0; scroller.setAttribute('role', 'region'); scroller.setAttribute('aria-label', title);
     const table = el('table', 'data-table');
     const head = el('thead'); const headerRow = el('tr');
     block.headers.forEach(title => {const th = el('th', '', title); th.scope = 'col'; headerRow.append(th);}); head.append(headerRow);
@@ -80,10 +82,10 @@
     if (block.note) container.append(el('p', 'table-note', block.note));
     return container;
   }
-  data.sections.forEach((section, index) => {
+  data.sections.forEach(section => {
     const node = el('section', 'section'); node.id = section.id;
     const heading = el('header', 'section-heading');
-    heading.append(el('h2', '', section.title), el('span', '', `${String(index + 1).padStart(2, '0')} / ${section.date}`));
+    heading.append(el('h2', '', displayTitle(section.title)), el('span', '', `数据截至 ${section.date}`));
     node.append(heading);
     section.blocks.forEach(block => {
       if (block.type === 'charts') {
@@ -94,7 +96,7 @@
       else if (block.type === 'note') node.append(el('p', 'section-note', block.text));
       else if (block.type === 'conclusions') {
         const conclusions = el('div', 'conclusions');
-        if (block.title) conclusions.append(el('h3', '', block.title));
+        if (block.title) conclusions.append(el('h3', '', displayTitle(block.title)));
         const list = el('ul'); block.items.forEach(item => list.append(el('li', '', item))); conclusions.append(list); node.append(conclusions);
       }
     });
