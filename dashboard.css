@@ -82,4 +82,16 @@ dialog[open]{display:flex;flex-direction:column}
 .viewer-canvas{flex:1;min-height:0;overflow:auto;max-height:none;padding:10px}
 #viewer-image{width:auto;height:auto;max-width:none;max-height:none;display:block;margin:auto}
 @media(max-width:900px){.metric-value{font-size:22px}.data-table th,.data-table td{padding:8px 10px}}
+.basis-toolbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:14px 0}
+.basis-toolbar label{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted)}
+.basis-toolbar select{font:inherit;font-size:13px;color:var(--ink);height:36px;min-width:210px;max-width:100%;background:white;border:1px solid var(--line);border-radius:4px;padding:0 28px 0 10px}
+.basis-count{font-size:12px;color:var(--muted)}
+.basis-pager{display:flex;align-items:center;gap:8px;margin-left:auto}
+.basis-pager button{height:36px;width:36px;display:grid;place-items:center;background:white;border:1px solid var(--line);border-radius:4px}
+.basis-pager button:disabled{opacity:.35;cursor:default}.basis-pager button:hover:not(:disabled){background:#edf4f3}
+#basis-page{font-size:12px;min-width:42px;text-align:center;font-variant-numeric:tabular-nums}
+.basis-stats{display:flex;gap:16px;flex-wrap:wrap;padding:0 14px 12px;color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.basis-stats span:first-child{color:var(--ink);font-weight:600}
+.basis-gallery .chart-date{white-space:normal}
+@media(max-width:600px){.basis-toolbar{gap:10px}.basis-toolbar label{width:100%}.basis-toolbar select{flex:1;min-width:0}.basis-stats{gap:10px;font-size:11px}.basis-grid{gap:16px}}
 @media(max-width:600px){.overview{padding:0}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.section>.metrics{grid-template-columns:minmax(0,1fr);padding:0}.section>.metrics .metric{border-right:0;border-bottom:1px solid var(--line)}.section>.metrics .metric:last-child{border-bottom:0}.section-heading{align-items:flex-start;gap:8px}.section-heading span{font-size:10px;padding-top:4px}.conclusions{padding-left:10px}.conclusions li{font-size:12px}.chart.tall .chart-image{height:480px}.table-block{margin:16px 0}.data-table{font-size:11px}.viewer-toolbar{flex-wrap:wrap;gap:8px;padding:10px}.viewer-tools{margin-left:auto}.viewer-heading{width:100%}dialog{height:calc(100dvh - 16px);max-height:calc(100dvh - 16px)}.viewer-canvas{padding:8px}#viewer-image{max-height:none}}

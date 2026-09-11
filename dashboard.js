@@ -46,6 +46,7 @@
   const chartMap = new Map(data.charts.map(chart => [chart.id, {...chart, title: displayTitle(chart.title)}]));
   function chartNode(chart) {
     const figure = el('figure', `chart${chart.tall ? ' tall' : ''}`);
+    figure.dataset.chartId = chart.id;
     const button = el('button', 'chart-open');
     button.type = 'button'; button.title = `查看${chart.title}`;
     button.setAttribute('aria-label', `查看${chart.title}`);
@@ -57,6 +58,13 @@
     button.append(image); button.addEventListener('click', () => openChart(chart, button));
     const caption = el('figcaption'); caption.append(el('span', '', chart.title), el('span', 'chart-date', chart.dateLabel));
     figure.append(button, caption);
+    if (Number.isFinite(chart.latestBasis) && Number.isFinite(chart.meanBasis)) {
+      const stats = el('div', 'basis-stats');
+      stats.append(el('span', '', `最新 ${chart.latestBasis > 0 ? '+' : ''}${chart.latestBasis.toFixed(2)}%`),
+        el('span', '', `均值 ${chart.meanBasis > 0 ? '+' : ''}${chart.meanBasis.toFixed(2)}%`),
+        el('span', '', `${chart.observations} 个交易日`));
+      figure.append(stats);
+    }
     if (chart.note) figure.append(el('p', 'chart-note', chart.note));
     return figure;
   }
@@ -82,6 +90,43 @@
     if (block.note) container.append(el('p', 'table-note', block.note));
     return container;
   }
+  function basisGallery(block) {
+    const container = el('div', 'basis-gallery');
+    const toolbar = el('div', 'basis-toolbar');
+    const label = el('label', '', '品种');
+    const select = el('select'); select.id = 'basis-product'; select.setAttribute('aria-label', '基差品种');
+    const all = el('option', '', '全部品种'); all.value = ''; select.append(all);
+    block.ids.forEach(id => {const option = el('option', '', chartMap.get(id).title); option.value = id; select.append(option);});
+    label.append(select);
+    const counter = el('span', 'basis-count'); counter.setAttribute('aria-live', 'polite');
+    const pager = el('div', 'basis-pager');
+    function pageButton(id, title, icon) {
+      const button = el('button'); button.id = id; button.type = 'button'; button.title = title; button.setAttribute('aria-label', title);
+      const image = el('img'); image.src = `assets/${icon}.svg`; image.alt = ''; image.width = 20; image.height = 20; button.append(image); return button;
+    }
+    const previous = pageButton('basis-previous', '上一页品种', 'chevron-left');
+    const next = pageButton('basis-next', '下一页品种', 'chevron-right');
+    const pageNumber = el('output'); pageNumber.id = 'basis-page'; pageNumber.setAttribute('aria-label', '品种页码');
+    pager.append(previous, pageNumber, next);
+    toolbar.append(label, counter, pager);
+    const grid = el('div', 'chart-grid basis-grid'); grid.setAttribute('aria-label', '各品种基差走势');
+    let page = 0;
+    function render() {
+      const ids = select.value ? [select.value] : block.ids;
+      const pages = Math.ceil(ids.length / block.pageSize);
+      page = Math.max(0, Math.min(page, pages - 1));
+      const visible = ids.slice(page * block.pageSize, (page + 1) * block.pageSize);
+      grid.replaceChildren(...visible.map(id => chartNode(chartMap.get(id))));
+      grid.classList.toggle('single', Boolean(select.value));
+      counter.textContent = `${ids.length} 个品种`;
+      pageNumber.value = `${page + 1} / ${pages}`;
+      previous.disabled = page === 0; next.disabled = page >= pages - 1;
+    }
+    select.addEventListener('change', () => {page = 0; render();});
+    previous.addEventListener('click', () => {page -= 1; render();});
+    next.addEventListener('click', () => {page += 1; render();});
+    container.append(toolbar, grid); render(); return container;
+  }
   data.sections.forEach(section => {
     const node = el('section', 'section'); node.id = section.id;
     const heading = el('header', 'section-heading');
@@ -91,7 +136,8 @@
       if (block.type === 'charts') {
         const group = el('div', `chart-grid${block.ids.length === 1 ? ' single' : ''}`);
         block.ids.forEach(id => group.append(chartNode(chartMap.get(id)))); node.append(group);
-      } else if (block.type === 'table') node.append(tableNode(block));
+      } else if (block.type === 'basis-gallery') node.append(basisGallery(block));
+      else if (block.type === 'table') node.append(tableNode(block));
       else if (block.type === 'metrics') node.append(metrics(block.items));
       else if (block.type === 'note') node.append(el('p', 'section-note', block.text));
       else if (block.type === 'conclusions') {
