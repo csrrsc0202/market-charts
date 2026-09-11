@@ -54,7 +54,7 @@ html{scroll-padding-top:70px}.section{scroll-margin-top:65px}
 .overview{display:block;padding:20px 0}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0}
 .section>.metrics{grid-template-columns:repeat(3,minmax(0,1fr));margin:20px 0;padding:16px 0;border-block:1px solid var(--line)}
 .chart-grid{margin:18px 0}.chart-grid.single{grid-template-columns:minmax(0,1fr)}
-#zhongcai .chart-grid{grid-template-columns:minmax(0,1fr)}
+#zhongcai .chart-grid,#equity .chart-grid{grid-template-columns:minmax(0,1fr)}
 .chart.tall .chart-image{height:620px;aspect-ratio:auto;object-fit:contain}
 .chart-image[hidden]{display:none}
 .conclusions{margin:15px 0 20px;padding:0 0 0 16px;border-left:3px solid var(--teal)}
