@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="referrer" content="no-referrer">
+  <title>持仓与资金观察 · 市场研究</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="dashboard.css">
+  <script defer src="site-data.js"></script>
+  <script defer src="dashboard.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div><p class="eyebrow">CSRRSC0202 / MARKET RESEARCH</p><h1>持仓与资金观察</h1></div>
+      <p class="edition" id="edition"></p>
+    </div>
+  </header>
+  <div class="nav-shell"><nav class="nav" aria-label="研究分类">
+    <a href="#zhongcai">中财期货</a><a href="#foreign">外资席位</a><a href="#warehouse">仓单库存</a>
+    <a href="#basis">期货基差</a><a href="#equity">股指与市场</a><a href="#funds">资金流向</a>
+  </nav></div>
+  <main>
+    <section class="overview" id="overview" aria-label="关键指标"></section>
+    <div id="sections"></div>
+    <noscript><p>图表页面需要启用 JavaScript。</p></noscript>
+  </main>
+  <footer>CSRRSC0202 · 市场研究</footer>
+  <dialog id="viewer" aria-labelledby="viewer-title">
+    <div class="viewer-toolbar"><div class="viewer-heading"><h2 id="viewer-title"></h2><p id="viewer-date"></p></div>
+      <div class="viewer-tools">
+        <button id="zoom-out" type="button" aria-label="缩小图表" title="缩小图表"><img src="assets/zoom-out.svg" width="20" height="20" alt=""></button>
+        <output id="zoom-value" aria-label="缩放比例"></output>
+        <button id="zoom-in" type="button" aria-label="放大图表" title="放大图表"><img src="assets/zoom-in.svg" width="20" height="20" alt=""></button>
+        <button id="zoom-fit" type="button" aria-label="适应窗口" title="适应窗口"><img src="assets/fit.svg" width="20" height="20" alt=""></button>
+        <button id="viewer-close" type="button" aria-label="关闭图表" title="关闭图表"><img src="assets/close.svg" width="22" height="22" alt=""></button>
+      </div>
+    </div>
+    <div class="viewer-canvas" tabindex="0" aria-label="图表画布"><img id="viewer-image" alt=""></div>
+  </dialog>
+</body>
+</html>
