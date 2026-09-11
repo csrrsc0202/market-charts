@@ -60,9 +60,11 @@
     figure.append(button, caption);
     if (Number.isFinite(chart.latestBasis) && Number.isFinite(chart.meanBasis)) {
       const stats = el('div', 'basis-stats');
-      stats.append(el('span', '', `最新 ${chart.latestBasis > 0 ? '+' : ''}${chart.latestBasis.toFixed(2)}%`),
+      stats.append(el('span', '', `最新年化 ${chart.latestBasis > 0 ? '+' : ''}${chart.latestBasis.toFixed(2)}%`),
         el('span', '', `均值 ${chart.meanBasis > 0 ? '+' : ''}${chart.meanBasis.toFixed(2)}%`),
         el('span', '', `${chart.observations} 个交易日`));
+      if (Number.isFinite(chart.avgTurnover20d)) stats.append(el('span', '', `20日均成交 ${chart.avgTurnover20d.toFixed(2)}亿元`));
+      if (chart.structure) stats.append(el('span', 'structure-label', chart.structure === 'FLAT' ? '近似平坦' : chart.structure));
       figure.append(stats);
     }
     if (chart.note) figure.append(el('p', 'chart-note', chart.note));
@@ -93,10 +95,23 @@
   function basisGallery(block) {
     const container = el('div', 'basis-gallery');
     const toolbar = el('div', 'basis-toolbar');
+    const structureLabel = el('label', '', '结构');
+    const structure = el('select'); structure.id = 'basis-structure'; structure.setAttribute('aria-label', '期限结构');
+    [['','全部结构'],['BACK','BACK'],['CONTANGO','CONTANGO'],['FLAT','近似平坦']].forEach(([value,title])=>{
+      const option=el('option','',title);option.value=value;structure.append(option);
+    });
+    structureLabel.append(structure);
     const label = el('label', '', '品种');
-    const select = el('select'); select.id = 'basis-product'; select.setAttribute('aria-label', '基差品种');
+    const select = el('select'); select.id = 'basis-product'; select.setAttribute('aria-label', '跨期价差品种');
     const all = el('option', '', '全部品种'); all.value = ''; select.append(all);
-    block.ids.forEach(id => {const option = el('option', '', chartMap.get(id).title); option.value = id; select.append(option);});
+    function updateProducts() {
+      select.replaceChildren(all);
+      block.ids.filter(id=>!structure.value || chartMap.get(id).structure===structure.value).forEach(id=>{
+        const option=el('option','',chartMap.get(id).title);option.value=id;select.append(option);
+      });
+      select.value='';
+    }
+    updateProducts();
     label.append(select);
     const counter = el('span', 'basis-count'); counter.setAttribute('aria-live', 'polite');
     const pager = el('div', 'basis-pager');
@@ -108,21 +123,23 @@
     const next = pageButton('basis-next', '下一页品种', 'chevron-right');
     const pageNumber = el('output'); pageNumber.id = 'basis-page'; pageNumber.setAttribute('aria-label', '品种页码');
     pager.append(previous, pageNumber, next);
-    toolbar.append(label, counter, pager);
-    const grid = el('div', 'chart-grid basis-grid'); grid.setAttribute('aria-label', '各品种基差走势');
+    toolbar.append(structureLabel, label, counter, pager);
+    const grid = el('div', 'chart-grid basis-grid'); grid.setAttribute('aria-label', '各品种跨期价差率走势');
     let page = 0;
     function render() {
-      const ids = select.value ? [select.value] : block.ids;
-      const pages = Math.ceil(ids.length / block.pageSize);
+      const ids = select.value ? [select.value] : block.ids.filter(id=>!structure.value || chartMap.get(id).structure===structure.value);
+      const pages = Math.max(1, Math.ceil(ids.length / block.pageSize));
       page = Math.max(0, Math.min(page, pages - 1));
       const visible = ids.slice(page * block.pageSize, (page + 1) * block.pageSize);
       grid.replaceChildren(...visible.map(id => chartNode(chartMap.get(id))));
+      if (!ids.length) grid.append(el('p','section-note','当前筛选暂无流动性达标品种'));
       grid.classList.toggle('single', Boolean(select.value));
       counter.textContent = `${ids.length} 个品种`;
       pageNumber.value = `${page + 1} / ${pages}`;
       previous.disabled = page === 0; next.disabled = page >= pages - 1;
     }
     select.addEventListener('change', () => {page = 0; render();});
+    structure.addEventListener('change',()=>{page=0;updateProducts();render();});
     previous.addEventListener('click', () => {page -= 1; render();});
     next.addEventListener('click', () => {page += 1; render();});
     container.append(toolbar, grid); render(); return container;
