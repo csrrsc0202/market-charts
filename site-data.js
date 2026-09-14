@@ -841,8 +841,10 @@ globalThis.RESEARCH_DASHBOARD = {
           "type": "conclusions",
           "title": "",
           "items": [
-            "跟踪品种数：60，异常品种数：17",
-            "仓单大增 7 个，仓单大减 2 个，高库存 11 个，低库存 1 个"
+            "跟踪品种数：63，异常品种数：18",
+            "仓单大增 6 个，仓单大减 2 个，高库存 10 个，低库存 3 个",
+            "仓单数据缺失/不可确认：4 个；缺失不计为零，不生成仓单异常信号。",
+            "仓单按单一汇总层级及固定交易所字段取值，零值不替换；各品种保留原单位，不跨品种相加。"
           ]
         },
         {
@@ -857,6 +859,7 @@ globalThis.RESEARCH_DASHBOARD = {
           "title": "仓单大幅增加",
           "headers": [
             "品种",
+            "单位",
             "当前仓单",
             "1日变化",
             "5日变化",
@@ -867,17 +870,8 @@ globalThis.RESEARCH_DASHBOARD = {
           ],
           "rows": [
             [
-              "燃油(FU)",
-              "600,000",
-              "597,000",
-              "504,920",
-              "458,320",
-              "97.1%",
-              "99.0%",
-              "WARRANT_SURGE,HIGH_STOCK"
-            ],
-            [
               "豆一(A)",
+              "手",
               "73,806",
               "6,510",
               "11,486",
@@ -888,6 +882,7 @@ globalThis.RESEARCH_DASHBOARD = {
             ],
             [
               "PVC(V)",
+              "手",
               "122,352",
               "4,793",
               "2,836",
@@ -898,6 +893,7 @@ globalThis.RESEARCH_DASHBOARD = {
             ],
             [
               "聚丙烯(PP)",
+              "手",
               "32,089",
               "3,973",
               "4,064",
@@ -907,17 +903,8 @@ globalThis.RESEARCH_DASHBOARD = {
               "WARRANT_SURGE,HIGH_STOCK"
             ],
             [
-              "沪锡(SN)",
-              "12,554",
-              "1,408",
-              "3,240",
-              "1,650",
-              "41.2%",
-              "48.8%",
-              "WARRANT_SURGE"
-            ],
-            [
               "棕榈油(P)",
+              "手",
               "8,734",
               "1,300",
               "5,607",
@@ -928,12 +915,24 @@ globalThis.RESEARCH_DASHBOARD = {
             ],
             [
               "白糖(SR)",
+              "张",
               "25,100",
               "1,053",
               "583",
               "1,236",
               "100.0%",
-              "64.3%",
+              "71.9%",
+              "WARRANT_SURGE"
+            ],
+            [
+              "沪锡(SN)",
+              "吨",
+              "6,277",
+              "704",
+              "1,620",
+              "825",
+              "41.2%",
+              "42.7%",
               "WARRANT_SURGE"
             ]
           ],
@@ -947,6 +946,7 @@ globalThis.RESEARCH_DASHBOARD = {
           "title": "仓单大幅减少",
           "headers": [
             "品种",
+            "单位",
             "当前仓单",
             "1日变化",
             "5日变化",
@@ -958,22 +958,24 @@ globalThis.RESEARCH_DASHBOARD = {
           "rows": [
             [
               "沪镍(NI)",
-              "195,098",
-              "-1,354",
-              "-3,508",
-              "-7,676",
+              "吨",
+              "97,549",
+              "-677",
+              "-1,754",
+              "-3,838",
               "77.8%",
-              "89.4%",
+              "88.1%",
               "WARRANT_DROP"
             ],
             [
               "菜油(OI)",
+              "张",
               "994",
               "-371",
               "100",
               "50",
               "49.4%",
-              "30.9%",
+              "34.6%",
               "WARRANT_DROP"
             ]
           ],
@@ -987,6 +989,7 @@ globalThis.RESEARCH_DASHBOARD = {
           "title": "高库存 / 低库存",
           "headers": [
             "品种",
+            "单位",
             "当前仓单",
             "1日变化",
             "5日变化",
@@ -998,6 +1001,7 @@ globalThis.RESEARCH_DASHBOARD = {
           "rows": [
             [
               "豆一(A)",
+              "手",
               "73,806",
               "6,510",
               "11,486",
@@ -1008,16 +1012,18 @@ globalThis.RESEARCH_DASHBOARD = {
             ],
             [
               "玻璃(FG)",
+              "张",
               "3,350",
               "0",
               "2,082",
               "2,039",
               "100.0%",
-              "94.2%",
+              "93.5%",
               "HIGH_STOCK"
             ],
             [
               "豆粕(M)",
+              "手",
               "44,439",
               "0",
               "8,919",
@@ -1028,6 +1034,7 @@ globalThis.RESEARCH_DASHBOARD = {
             ],
             [
               "棕榈油(P)",
+              "手",
               "8,734",
               "1,300",
               "5,607",
@@ -1038,6 +1045,7 @@ globalThis.RESEARCH_DASHBOARD = {
             ],
             [
               "聚丙烯(PP)",
+              "手",
               "32,089",
               "3,973",
               "4,064",
@@ -1048,6 +1056,7 @@ globalThis.RESEARCH_DASHBOARD = {
             ],
             [
               "菜粕(RM)",
+              "张",
               "13,816",
               "0",
               "7,010",
@@ -1058,6 +1067,7 @@ globalThis.RESEARCH_DASHBOARD = {
             ],
             [
               "多晶硅(PS)",
+              "手",
               "24,320",
               "10",
               "-10",
@@ -1068,12 +1078,13 @@ globalThis.RESEARCH_DASHBOARD = {
             ],
             [
               "沪金(AU)",
+              "千克",
               "114,843",
               "0",
               "-15",
               "1,167",
               "97.5%",
-              "97.1%",
+              "96.8%",
               "HIGH_STOCK"
             ]
           ],
@@ -2039,17 +2050,6 @@ globalThis.RESEARCH_DASHBOARD = {
       "dateLabel": "数据截至 2026-09-11",
       "width": 2240,
       "height": 1120,
-      "note": "",
-      "tall": false
-    },
-    {
-      "id": "warehouse",
-      "title": "仓单季节性分位四象限",
-      "src": "assets/warehouse-ff0a7baba43c.png",
-      "date": "2026-09-11",
-      "dateLabel": "数据截至 2026-09-11",
-      "width": 1920,
-      "height": 1280,
       "note": "",
       "tall": false
     },
@@ -3420,6 +3420,17 @@ globalThis.RESEARCH_DASHBOARD = {
       "dateLabel": "数据截至 2026-09-11",
       "width": 1950,
       "height": 1350,
+      "note": "",
+      "tall": false
+    },
+    {
+      "id": "warehouse",
+      "title": "仓单季节性分位四象限",
+      "src": "assets/warehouse-04428703afbc.png",
+      "date": "2026-09-11",
+      "dateLabel": "数据截至 2026-09-11",
+      "width": 1920,
+      "height": 1280,
       "note": "",
       "tall": false
     }
