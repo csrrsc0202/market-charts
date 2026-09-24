@@ -3197,7 +3197,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "capital-flows",
       "title": "股市与期货近期资金观察",
-      "src": "assets/capital-flows-e6b775c353ad.png",
+      "src": "assets/capital-flows-846c4d2ecc2c.png",
       "date": "2026-09-23",
       "dateLabel": "数据截至 2026-09-23",
       "width": 2080,
@@ -3208,7 +3208,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "futures-flow",
       "title": "期货主要流入流出品种",
-      "src": "assets/futures-flow-7c13e2d63ec5.png",
+      "src": "assets/futures-flow-44fa836b01fd.png",
       "date": "2026-09-23",
       "dateLabel": "数据截至 2026-09-23",
       "width": 1950,
