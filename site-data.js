@@ -852,7 +852,8 @@ globalThis.RESEARCH_DASHBOARD = {
           "type": "note",
           "text": "仅统计具体合约可见净持仓绝对值前五外资席位。折算金额为持仓变化×乘数×结算价，不是实际资金流；跨合约换月与相反方向会影响汇总。"
         }
-      ]
+      ],
+      "refreshedAt": "2026-10-01 18:11:45"
     },
     {
       "id": "warehouse",
