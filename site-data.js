@@ -322,7 +322,8 @@ globalThis.RESEARCH_DASHBOARD = {
           "type": "note",
           "text": "筛选：多空两侧较大名义金额 > 10亿元，或较大持仓侧 / 品种全部真实合约OI > 5%。金额不是保证金；两项独立判断。"
         }
-      ]
+      ],
+      "refreshedAt": "2026-10-01 18:21:11"
     },
     {
       "id": "foreign",
