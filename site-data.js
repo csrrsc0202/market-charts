@@ -1,6 +1,6 @@
 globalThis.RESEARCH_DASHBOARD = {
-  "edition": "2026-10-01",
-  "dataStart": "2026-09-29",
+  "edition": "2026-10-02",
+  "dataStart": "2026-09-30",
   "dataEnd": "2026-09-30",
   "sections": [
     {
@@ -322,8 +322,7 @@ globalThis.RESEARCH_DASHBOARD = {
           "type": "note",
           "text": "筛选：多空两侧较大名义金额 > 10亿元，或较大持仓侧 / 品种全部真实合约OI > 5%。金额不是保证金；两项独立判断。"
         }
-      ],
-      "refreshedAt": "2026-10-01 18:21:11"
+      ]
     },
     {
       "id": "foreign",
@@ -853,8 +852,7 @@ globalThis.RESEARCH_DASHBOARD = {
           "type": "note",
           "text": "仅统计具体合约可见净持仓绝对值前五外资席位。折算金额为持仓变化×乘数×结算价，不是实际资金流；跨合约换月与相反方向会影响汇总。"
         }
-      ],
-      "refreshedAt": "2026-10-01 18:11:45"
+      ]
     },
     {
       "id": "warehouse",
@@ -1145,36 +1143,47 @@ globalThis.RESEARCH_DASHBOARD = {
           "rows": [
             [
               "不锈钢(SS)",
-              "65,554",
-              "-181",
-              "-1,554",
-              "-11,788",
-              "35",
+              "65,496",
+              "-58",
+              "-1,006",
+              "-11,608",
+              "36",
               "100.0%",
               "100.0%",
               "CONTINUOUS_DESTOCK_STRONG,PERSISTENT_20D_DESTOCK"
             ],
             [
               "丁二烯橡胶(BR)",
-              "13,580",
-              "-680",
-              "-6,060",
-              "-12,480",
-              "11",
+              "13,360",
+              "-220",
+              "-5,200",
+              "-12,300",
+              "12",
               "100.0%",
               "90.0%",
               "CONTINUOUS_DESTOCK_STRONG,PERSISTENT_20D_DESTOCK"
             ],
             [
-              "铸造铝合金(AD)",
-              "19,144",
-              "-627",
-              "-2,677",
-              "-2,474",
-              "9",
-              "100.0%",
-              "65.0%",
-              "CONTINUOUS_DESTOCK_STRONG,PERSISTENT_20D_DESTOCK"
+              "铂(PT)",
+              "4,425",
+              "-11",
+              "-181",
+              "616",
+              "4",
+              "80.0%",
+              "40.0%",
+              "CONTINUOUS_DESTOCK"
+            ],
+            [
+              "尿素(UR)",
+              "8,421",
+              "-4",
+              "302",
+              "1,776",
+              "4",
+              "80.0%",
+              "55.0%",
+              "CONTINUOUS_DESTOCK"
             ],
             [
               "焦煤(JM)",
@@ -1188,92 +1197,81 @@ globalThis.RESEARCH_DASHBOARD = {
               "CONTINUOUS_DESTOCK"
             ],
             [
-              "铂(PT)",
-              "4,436",
-              "-16",
-              "-200",
-              "628",
+              "多晶硅(PS)",
+              "23,210",
+              "-390",
+              "-2,310",
+              "-730",
               "3",
-              "80.0%",
-              "35.0%",
-              "CONTINUOUS_DESTOCK"
-            ],
-            [
-              "尿素(UR)",
-              "8,425",
-              "-500",
-              "127",
-              "1,827",
-              "3",
-              "80.0%",
-              "50.0%",
-              "CONTINUOUS_DESTOCK"
-            ],
-            [
-              "锰硅(SM)",
-              "41,622",
-              "-1,020",
-              "10",
-              "-15,713",
-              "1",
-              "40.0%",
-              "75.0%",
-              "PERSISTENT_20D_DESTOCK"
-            ],
-            [
-              "铁矿石(I)",
-              "300",
-              "-4,850",
-              "-4,850",
-              "-5,200",
-              "1",
-              "20.0%",
+              "60.0%",
               "25.0%",
-              "LOW_INVENTORY"
+              "CONTINUOUS_DESTOCK"
             ],
             [
-              "生猪(LH)",
-              "110",
-              "-80",
-              "-224",
-              "-340",
-              "1",
-              "40.0%",
+              "碳酸锂(LC)",
+              "31,990",
+              "-1,230",
+              "-3,868",
+              "-13,849",
+              "2",
+              "80.0%",
               "65.0%",
               "PERSISTENT_20D_DESTOCK"
             ],
             [
-              "20号胶(NR)",
-              "7,358",
+              "铁矿石(I)",
               "0",
-              "-2,925",
-              "-5,443",
-              "0",
-              "20.0%",
+              "-300",
+              "-5,150",
+              "-6,200",
+              "2",
+              "40.0%",
               "30.0%",
               "LOW_INVENTORY"
             ],
             [
-              "纯碱(SA)",
-              "3,094",
-              "1,243",
-              "3,094",
-              "-3,919",
+              "生猪(LH)",
               "0",
-              "20.0%",
+              "-110",
+              "-334",
+              "-467",
+              "2",
+              "60.0%",
               "70.0%",
-              "PERSISTENT_20D_DESTOCK"
+              "PERSISTENT_20D_DESTOCK,LOW_INVENTORY"
+            ],
+            [
+              "苯乙烯(EB)",
+              "0",
+              "-1,774",
+              "-1,094",
+              "-3,885",
+              "1",
+              "60.0%",
+              "45.0%",
+              "LOW_INVENTORY"
             ],
             [
               "聚丙烯(PP)",
-              "26,954",
-              "805",
-              "-1,449",
-              "-1,952",
-              "0",
+              "26,922",
+              "-32",
+              "-925",
+              "-1,984",
+              "1",
               "80.0%",
-              "80.0%",
+              "85.0%",
               "PERSISTENT_20D_DESTOCK"
+            ],
+            [
+              "纯苯(BZ)",
+              "0",
+              "-525",
+              "-356",
+              "-31",
+              "1",
+              "40.0%",
+              "25.0%",
+              "LOW_INVENTORY"
             ]
           ],
           "totals": [],
@@ -1545,8 +1543,8 @@ globalThis.RESEARCH_DASHBOARD = {
           "type": "conclusions",
           "title": "资金流入哪个指数",
           "items": [
-            "宽基 ETF 近5日净流入靠前：科创50 +110.30亿元、沪深300 +62.55亿元、创业板指 +54.55亿元",
-            "宽基 ETF 近5日净流出靠前：上证50 -17.56亿元、中证500 -9.86亿元、中证2000 -0.98亿元"
+            "宽基 ETF 近5日净流入靠前：科创50 +110.30亿元、沪深300 +66.81亿元、创业板指 +54.02亿元",
+            "宽基 ETF 近5日净流出靠前：上证50 -17.56亿元、中证500 -9.80亿元、中证2000 -0.98亿元"
           ]
         },
         {
@@ -1568,19 +1566,19 @@ globalThis.RESEARCH_DASHBOARD = {
             ],
             [
               "沪深300",
-              "+0.58",
-              "+62.55",
-              "+95.35"
+              "+2.41",
+              "+66.81",
+              "+99.61"
             ],
             [
               "创业板指",
-              "-0.40",
-              "+54.55",
-              "+50.70"
+              "-0.58",
+              "+54.02",
+              "+48.76"
             ],
             [
               "中证1000",
-              "+6.06",
+              "+6.07",
               "+38.18",
               "+68.68"
             ],
@@ -1598,9 +1596,9 @@ globalThis.RESEARCH_DASHBOARD = {
             ],
             [
               "中证500",
-              "+0.99",
-              "-9.86",
-              "+15.63"
+              "+1.02",
+              "-9.80",
+              "+15.69"
             ],
             [
               "上证50",
@@ -1622,13 +1620,13 @@ globalThis.RESEARCH_DASHBOARD = {
           "items": [
             {
               "label": "权益 ETF 当日净申赎",
-              "value": "+49.8",
+              "value": "+48.1",
               "unit": "亿元",
               "detail": "2026-09-30"
             },
             {
               "label": "非货 ETF 当日净申赎",
-              "value": "+200.1",
+              "value": "+198.3",
               "unit": "亿元",
               "detail": "2026-09-30"
             },
@@ -1748,23 +1746,23 @@ globalThis.RESEARCH_DASHBOARD = {
             ],
             [
               "09-29",
-              "+85.4",
-              "+23.8",
+              "+82.4",
+              "+24.9",
               "+85.5",
               "-0.3",
               "-0.3",
               "+0.0",
-              "+194.1"
+              "+192.2"
             ],
             [
               "09-30",
-              "+48.3",
-              "+1.5",
-              "+144.2",
+              "+45.7",
+              "+2.4",
+              "+144.1",
               "+6.1",
               "-0.0",
               "+0.0",
-              "+200.1"
+              "+198.3"
             ]
           ],
           "totals": [],
@@ -2206,7 +2204,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "basis-ec",
       "title": "集运指数 · EC",
-      "src": "assets/basis-ec-dc58daa60233.png",
+      "src": "assets/basis-ec-e171ab8a5e25.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1080,
@@ -2215,8 +2213,8 @@ globalThis.RESEARCH_DASHBOARD = {
       "tall": false,
       "product": "集运指数",
       "productCode": "EC",
-      "latestBasis": -47.46,
-      "meanBasis": -83.43400000000001,
+      "latestBasis": -42.58,
+      "meanBasis": -83.39333333333335,
       "observations": 120,
       "structure": "BACK",
       "avgTurnover20d": 29.9984720125
@@ -2368,7 +2366,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "basis-m",
       "title": "豆粕 · M",
-      "src": "assets/basis-m-2539c9f25037.png",
+      "src": "assets/basis-m-7ee2def997dc.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1080,
@@ -2377,8 +2375,8 @@ globalThis.RESEARCH_DASHBOARD = {
       "tall": false,
       "product": "豆粕",
       "productCode": "M",
-      "latestBasis": -26.45,
-      "meanBasis": -3.84275,
+      "latestBasis": -19.63,
+      "meanBasis": -3.785916666666666,
       "observations": 120,
       "structure": "BACK",
       "avgTurnover20d": 660.4433927
@@ -2530,7 +2528,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "basis-y",
       "title": "豆油 · Y",
-      "src": "assets/basis-y-588411cccb5f.png",
+      "src": "assets/basis-y-24228c464833.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1080,
@@ -2539,8 +2537,8 @@ globalThis.RESEARCH_DASHBOARD = {
       "tall": false,
       "product": "豆油",
       "productCode": "Y",
-      "latestBasis": -6.8,
-      "meanBasis": -2.758666666666666,
+      "latestBasis": -6.25,
+      "meanBasis": -2.7540833333333334,
       "observations": 120,
       "structure": "BACK",
       "avgTurnover20d": 420.41557015
@@ -2548,7 +2546,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "basis-oi",
       "title": "菜油 · OI",
-      "src": "assets/basis-oi-3d3196e9fc1c.png",
+      "src": "assets/basis-oi-9534c1e5b13f.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1080,
@@ -2557,8 +2555,8 @@ globalThis.RESEARCH_DASHBOARD = {
       "tall": false,
       "product": "菜油",
       "productCode": "OI",
-      "latestBasis": -6.6,
-      "meanBasis": -3.442833333333333,
+      "latestBasis": -5.9,
+      "meanBasis": -3.437,
       "observations": 120,
       "structure": "BACK",
       "avgTurnover20d": 390.56694915
@@ -2728,7 +2726,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "basis-cf",
       "title": "棉花 · CF",
-      "src": "assets/basis-cf-f7ee646d3b3f.png",
+      "src": "assets/basis-cf-570e91b24ebe.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1080,
@@ -2737,8 +2735,8 @@ globalThis.RESEARCH_DASHBOARD = {
       "tall": false,
       "product": "棉花",
       "productCode": "CF",
-      "latestBasis": -2.09,
-      "meanBasis": 2.1319999999999997,
+      "latestBasis": -1.14,
+      "meanBasis": 2.1399166666666662,
       "observations": 120,
       "structure": "FLAT",
       "avgTurnover20d": 396.2111032
@@ -2836,7 +2834,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "basis-rm",
       "title": "菜粕 · RM",
-      "src": "assets/basis-rm-2627435ce04c.png",
+      "src": "assets/basis-rm-5c970472ef3f.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1080,
@@ -2845,10 +2843,10 @@ globalThis.RESEARCH_DASHBOARD = {
       "tall": false,
       "product": "菜粕",
       "productCode": "RM",
-      "latestBasis": 0.37,
-      "meanBasis": 0.40325,
+      "latestBasis": 3.18,
+      "meanBasis": -1.4239166666666667,
       "observations": 120,
-      "structure": "FLAT",
+      "structure": "CONTANGO",
       "avgTurnover20d": 280.09924785
     },
     {
@@ -2944,7 +2942,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "basis-au",
       "title": "黄金 · AU",
-      "src": "assets/basis-au-f5744a9bc688.png",
+      "src": "assets/basis-au-c99250b5ef67.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1080,
@@ -2953,8 +2951,8 @@ globalThis.RESEARCH_DASHBOARD = {
       "tall": false,
       "product": "黄金",
       "productCode": "AU",
-      "latestBasis": 1.65,
-      "meanBasis": 1.49125,
+      "latestBasis": 1.61,
+      "meanBasis": 1.4909166666666667,
       "observations": 120,
       "structure": "FLAT",
       "avgTurnover20d": 3412.8160124100004
@@ -2998,7 +2996,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "basis-sr",
       "title": "白糖 · SR",
-      "src": "assets/basis-sr-f9a38d7cb3ca.png",
+      "src": "assets/basis-sr-bb5484dab991.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1080,
@@ -3007,8 +3005,8 @@ globalThis.RESEARCH_DASHBOARD = {
       "tall": false,
       "product": "白糖",
       "productCode": "SR",
-      "latestBasis": 4.29,
-      "meanBasis": 4.319416666666667,
+      "latestBasis": 4.33,
+      "meanBasis": 4.31975,
       "observations": 120,
       "structure": "CONTANGO",
       "avgTurnover20d": 342.63051205
@@ -3016,7 +3014,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "basis-a",
       "title": "豆一 · A",
-      "src": "assets/basis-a-aca4c78537d8.png",
+      "src": "assets/basis-a-d18a8fa5f600.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1080,
@@ -3025,8 +3023,8 @@ globalThis.RESEARCH_DASHBOARD = {
       "tall": false,
       "product": "豆一",
       "productCode": "A",
-      "latestBasis": 5.03,
-      "meanBasis": 3.7933333333333334,
+      "latestBasis": 4.96,
+      "meanBasis": 3.79275,
       "observations": 120,
       "structure": "CONTANGO",
       "avgTurnover20d": 215.93313410000005
@@ -3088,7 +3086,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "basis-c",
       "title": "玉米 · C",
-      "src": "assets/basis-c-b9486afeaabc.png",
+      "src": "assets/basis-c-50d559ebcc39.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1080,
@@ -3097,8 +3095,8 @@ globalThis.RESEARCH_DASHBOARD = {
       "tall": false,
       "product": "玉米",
       "productCode": "C",
-      "latestBasis": 7.94,
-      "meanBasis": 1.4679166666666668,
+      "latestBasis": 7.72,
+      "meanBasis": 1.4660833333333334,
       "observations": 120,
       "structure": "CONTANGO",
       "avgTurnover20d": 184.9086004
@@ -3106,7 +3104,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "basis-cj",
       "title": "红枣 · CJ",
-      "src": "assets/basis-cj-f5d3c85af518.png",
+      "src": "assets/basis-cj-6a416a358a69.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1080,
@@ -3115,8 +3113,8 @@ globalThis.RESEARCH_DASHBOARD = {
       "tall": false,
       "product": "红枣",
       "productCode": "CJ",
-      "latestBasis": 8.67,
-      "meanBasis": 13.992916666666668,
+      "latestBasis": 9.58,
+      "meanBasis": 14.000499999999999,
       "observations": 120,
       "structure": "CONTANGO",
       "avgTurnover20d": 94.2208516
@@ -3160,7 +3158,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "basis-cs",
       "title": "玉米淀粉 · CS",
-      "src": "assets/basis-cs-24a55acbc9ba.png",
+      "src": "assets/basis-cs-53250f0b3053.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1080,
@@ -3169,8 +3167,8 @@ globalThis.RESEARCH_DASHBOARD = {
       "tall": false,
       "product": "玉米淀粉",
       "productCode": "CS",
-      "latestBasis": 10.4,
-      "meanBasis": 1.00575,
+      "latestBasis": 10.1,
+      "meanBasis": 1.0032500000000002,
       "observations": 120,
       "structure": "CONTANGO",
       "avgTurnover20d": 43.9811874
@@ -3304,7 +3302,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "basis-lh",
       "title": "生猪 · LH",
-      "src": "assets/basis-lh-db1b752587e5.png",
+      "src": "assets/basis-lh-fd92104de5a7.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1080,
@@ -3313,8 +3311,8 @@ globalThis.RESEARCH_DASHBOARD = {
       "tall": false,
       "product": "生猪",
       "productCode": "LH",
-      "latestBasis": 25.73,
-      "meanBasis": 38.7825,
+      "latestBasis": 28.91,
+      "meanBasis": 38.809,
       "observations": 120,
       "structure": "CONTANGO",
       "avgTurnover20d": 417.0233427
@@ -3322,9 +3320,9 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "seasonality-ic",
       "title": "IC 中证500：90日 / 180日季节性",
-      "src": "assets/seasonality-ic-2f2b71a38960.png",
-      "date": "2026-09-29",
-      "dateLabel": "数据截至 2026-09-29",
+      "src": "assets/seasonality-ic-c23f8c3d0e86.png",
+      "date": "2026-09-30",
+      "dateLabel": "数据截至 2026-09-30",
       "width": 2400,
       "height": 1600,
       "note": "",
@@ -3333,9 +3331,9 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "seasonality-im",
       "title": "IM 中证1000：90日 / 180日季节性",
-      "src": "assets/seasonality-im-43ca1f1eecd9.png",
-      "date": "2026-09-29",
-      "dateLabel": "数据截至 2026-09-29",
+      "src": "assets/seasonality-im-635cf3043e82.png",
+      "date": "2026-09-30",
+      "dateLabel": "数据截至 2026-09-30",
       "width": 2400,
       "height": 1600,
       "note": "",
@@ -3344,9 +3342,9 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "seasonality-ih",
       "title": "IH 上证50：90日 / 180日季节性",
-      "src": "assets/seasonality-ih-521dc196f486.png",
-      "date": "2026-09-29",
-      "dateLabel": "数据截至 2026-09-29",
+      "src": "assets/seasonality-ih-9527b73b7e46.png",
+      "date": "2026-09-30",
+      "dateLabel": "数据截至 2026-09-30",
       "width": 2400,
       "height": 1600,
       "note": "",
@@ -3355,9 +3353,9 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "seasonality-if",
       "title": "IF 沪深300：90日 / 180日季节性",
-      "src": "assets/seasonality-if-f283e964d843.png",
-      "date": "2026-09-29",
-      "dateLabel": "数据截至 2026-09-29",
+      "src": "assets/seasonality-if-03a92b1f702c.png",
+      "date": "2026-09-30",
+      "dateLabel": "数据截至 2026-09-30",
       "width": 2400,
       "height": 1600,
       "note": "",
@@ -3366,7 +3364,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "etf",
       "title": "1.1.1 四类 ETF 近五年累计净资金流",
-      "src": "assets/etf-2d6b2760c990.png",
+      "src": "assets/etf-17ed55435a59.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 2720,
@@ -3388,7 +3386,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "index-flows",
       "title": "宽基 ETF 近5日净申赎",
-      "src": "assets/index-flows-ec1e93900257.png",
+      "src": "assets/index-flows-10cda391baf7.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 1920,
@@ -3399,7 +3397,7 @@ globalThis.RESEARCH_DASHBOARD = {
     {
       "id": "capital-flows",
       "title": "股市与期货近期资金观察",
-      "src": "assets/capital-flows-bdb872bdf095.png",
+      "src": "assets/capital-flows-dc88d19f76f8.png",
       "date": "2026-09-30",
       "dateLabel": "数据截至 2026-09-30",
       "width": 2080,
@@ -3451,7 +3449,7 @@ globalThis.RESEARCH_DASHBOARD = {
     },
     {
       "label": "权益 ETF 净申赎",
-      "value": "+49.8",
+      "value": "+48.1",
       "unit": "亿元",
       "detail": "2026-09-30"
     }
