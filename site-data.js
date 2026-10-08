@@ -1,5 +1,5 @@
 globalThis.RESEARCH_DASHBOARD = {
-  "edition": "2026-10-02",
+  "edition": "2026-10-08",
   "dataStart": "2026-09-30",
   "dataEnd": "2026-09-30",
   "sections": [
@@ -322,7 +322,8 @@ globalThis.RESEARCH_DASHBOARD = {
           "type": "note",
           "text": "筛选：多空两侧较大名义金额 > 10亿元，或较大持仓侧 / 品种全部真实合约OI > 5%。金额不是保证金；两项独立判断。"
         }
-      ]
+      ],
+      "refreshedAt": "2026-10-08 08:17:51"
     },
     {
       "id": "foreign",
