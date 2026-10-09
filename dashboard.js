@@ -154,6 +154,7 @@
         const group = el('div', `chart-grid${block.ids.length === 1 ? ' single' : ''}`);
         block.ids.forEach(id => group.append(chartNode(chartMap.get(id)))); node.append(group);
       } else if (block.type === 'basis-gallery') node.append(basisGallery(block));
+      else if (block.type === 'commodity-spot') node.append(createCommoditySpot(block));
       else if (block.type === 'table') node.append(tableNode(block));
       else if (block.type === 'metrics') node.append(metrics(block.items));
       else if (block.type === 'note') node.append(el('p', 'section-note', block.text));
