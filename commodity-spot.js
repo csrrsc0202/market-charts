@@ -23,20 +23,22 @@ globalThis.createCommoditySpot = function(block) {
   const pct=v=>v==null?'—':fmt(v,2,true)+'%';
   function chart(product){
     const wrap=node('div','spot-chart');const points=block.series[product]||[];
+    const unit=block.rows.find(r=>r.product===product)?.unit||'';
+    wrap.append(node('p','spot-meta',`绝对价差：期货收盘价－现货（${unit}）`));
     const valid=points.filter(p=>p[1]!=null&&Number.isFinite(p[1]));
     if(!valid.length){wrap.append(node('p','','暂无有效历史数据'));return wrap;}
-    const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 1000 300');svg.setAttribute('role','img');svg.setAttribute('aria-label',product+'过去一年价差率走势');
-    const title=document.createElementNS(ns,'title');title.textContent=product+'每日最近非交割月期现价差率';svg.append(title);
+    const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 1000 300');svg.setAttribute('role','img');svg.setAttribute('aria-label',product+'过去一年绝对价差走势（'+unit+'）');
+    const title=document.createElementNS(ns,'title');title.textContent=product+'每日最近非交割月期现价差（'+unit+'）';svg.append(title);
     const asof=new Date(block.date+'T00:00:00Z'),start=new Date(asof);start.setUTCFullYear(start.getUTCFullYear()-1);
     let lo=Math.min(0,...valid.map(p=>p[1])),hi=Math.max(0,...valid.map(p=>p[1]));let pad=Math.max((hi-lo)*.08,.1);lo-=pad;hi+=pad;
     const x=d=>65+(new Date(d+'T00:00:00Z')-start)/(asof-start)*910,y=v=>255-(v-lo)/(hi-lo)*225;
     function text(tx,ty,value){const t=document.createElementNS(ns,'text');t.setAttribute('x',tx);t.setAttribute('y',ty);t.textContent=value;svg.append(t);}
-    for(let i=0;i<=4;i++){const v=lo+(hi-lo)*i/4,line=document.createElementNS(ns,'line');line.setAttribute('x1',65);line.setAttribute('x2',975);line.setAttribute('y1',y(v));line.setAttribute('y2',y(v));line.setAttribute('stroke','#dae4e5');svg.append(line);text(2,y(v)+4,v.toFixed(2)+'%');}
+    for(let i=0;i<=4;i++){const v=lo+(hi-lo)*i/4,line=document.createElementNS(ns,'line');line.setAttribute('x1',65);line.setAttribute('x2',975);line.setAttribute('y1',y(v));line.setAttribute('y2',y(v));line.setAttribute('stroke','#dae4e5');svg.append(line);text(2,y(v)+4,fmt(v));}
     let path='',connected=false;points.forEach(p=>{if(p[1]==null||!Number.isFinite(p[1])){connected=false;return;}path+=(connected?'L':'M')+x(p[0]).toFixed(2)+' '+y(p[1]).toFixed(2)+' ';connected=true;});
     const line=document.createElementNS(ns,'path');line.setAttribute('d',path);line.setAttribute('fill','none');line.setAttribute('stroke','#177b84');line.setAttribute('stroke-width','2');svg.append(line);
-    valid.forEach(p=>{const c=document.createElementNS(ns,'circle');c.setAttribute('cx',x(p[0]));c.setAttribute('cy',y(p[1]));c.setAttribute('r','3');c.setAttribute('fill','#177b84');const t=document.createElementNS(ns,'title');t.textContent=`${p[0]} · ${p[2]} · ${p[1].toFixed(2)}%`;c.append(t);svg.append(c);});
+    valid.forEach(p=>{const c=document.createElementNS(ns,'circle');c.setAttribute('cx',x(p[0]));c.setAttribute('cy',y(p[1]));c.setAttribute('r','3');c.setAttribute('fill','#177b84');const t=document.createElementNS(ns,'title');t.textContent=`${p[0]} · ${p[2]} · ${fmt(p[1])} ${unit}`;c.append(t);svg.append(c);});
     text(65,283,start.toISOString().slice(0,10));text(880,283,block.date);wrap.append(svg);
-    wrap.append(node('p','spot-meta',`${valid.length}个有效交易日 · ${valid[0][0]} 至 ${valid[valid.length-1][0]} · 每日滚动选约，空缺不填充；悬停查看日期、合约及价差率。`));return wrap;
+    wrap.append(node('p','spot-meta',`${valid.length}个有效交易日 · ${valid[0][0]} 至 ${valid[valid.length-1][0]} · 每日滚动选约，空缺不填充；悬停查看日期、合约及绝对价差。`));return wrap;
   }
   function render(){
     body.replaceChildren();const q=filter.value.trim().toLowerCase();
