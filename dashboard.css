@@ -97,3 +97,10 @@ dialog[open]{display:flex;flex-direction:column}
 .basis-gallery .chart-date{white-space:normal}
 @media(max-width:600px){.basis-toolbar{gap:10px}.basis-toolbar label{width:100%}.basis-toolbar select{flex:1;min-width:0}.basis-stats{gap:10px;font-size:11px}.basis-grid{gap:16px}}
 @media(max-width:600px){.overview{padding:0}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.section>.metrics{grid-template-columns:minmax(0,1fr);padding:0}.section>.metrics .metric{border-right:0;border-bottom:1px solid var(--line)}.section>.metrics .metric:last-child{border-bottom:0}.section-heading{align-items:flex-start;gap:8px}.section-heading span{font-size:10px;padding-top:4px}.conclusions{padding-left:10px}.conclusions li{font-size:12px}.chart.tall .chart-image{height:480px}.table-block{margin:16px 0}.data-table{font-size:11px}.viewer-toolbar{flex-wrap:wrap;gap:8px;padding:10px}.viewer-tools{margin-left:auto}.viewer-heading{width:100%}dialog{height:calc(100dvh - 16px);max-height:calc(100dvh - 16px)}.viewer-canvas{padding:8px}#viewer-image{max-height:none}}
+
+/* Separate index panels keep labels readable at the actual page width. */
+.chart-grid.index-flow-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,560px),1fr));gap:24px}
+.chart-group-title{font-size:18px;margin:26px 0 12px}
+.index-flow-grid figcaption{font-size:16px;flex-wrap:wrap;gap:6px}
+.index-flow-grid .chart-note{font-size:14px;line-height:1.7}
+.index-flow-grid .chart-image{height:auto;aspect-ratio:var(--image-ratio)}

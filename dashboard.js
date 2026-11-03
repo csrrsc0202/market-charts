@@ -152,6 +152,9 @@
     section.blocks.forEach(block => {
       if (block.type === 'charts') {
         const group = el('div', `chart-grid${block.ids.length === 1 ? ' single' : ''}`);
+        if (block.layout === 'index-flows') group.classList.add('index-flow-grid');
+        if (block.title) node.append(el('h3', 'chart-group-title', block.title));
+        if (block.note) node.append(el('p', 'section-note', block.note));
         block.ids.forEach(id => group.append(chartNode(chartMap.get(id)))); node.append(group);
       } else if (block.type === 'basis-gallery') node.append(basisGallery(block));
       else if (block.type === 'commodity-spot') node.append(createCommoditySpot(block));
